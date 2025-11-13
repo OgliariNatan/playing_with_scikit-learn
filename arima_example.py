@@ -1,11 +1,11 @@
 """
-ARIMA Time Series Forecasting Example
+Exemplo de Previsão de Séries Temporais com ARIMA
 
-This script demonstrates how to use ARIMA (AutoRegressive Integrated Moving Average)
-for time series forecasting. ARIMA is a popular statistical method for analyzing
-and forecasting time series data.
+Este script demonstra como usar ARIMA (AutoRegressive Integrated Moving Average)
+para previsão de séries temporais. ARIMA é um método estatístico popular para análise
+e previsão de dados de séries temporais.
 
-Author: Playing with scikit-learn repository
+Autor: Repositório Playing with scikit-learn
 """
 
 import numpy as np
@@ -217,5 +217,71 @@ def main():
     print("=" * 60)
 
 
+def exemplo_simples():
+    """
+    Exemplo simplificado de uso do ARIMA
+    """
+    print("\n" + "=" * 60)
+    print("Exemplo Simples de ARIMA")
+    print("=" * 60)
+    
+    # Criar dados de exemplo
+    quantidade = pd.Series([10, 12, 15, 18, 20, 22, 25, 28, 30, 33])
+    print(f"\nDados originais: {quantidade.values}")
+    
+    # Configurar e treinar o modelo ARIMA
+    dados_serie_temporal = quantidade  # Exemplo de série
+    modelo = ARIMA(dados_serie_temporal, order=(2, 1, 2))  # Parâmetros ajustáveis
+    modelo_treinado = modelo.fit()
+    
+    # Fazer previsão para os próximos 3 pontos
+    previsao = modelo_treinado.predict(start=len(dados_serie_temporal), end=len(dados_serie_temporal)+2)
+    print(f"Previsão para os próximos 3 pontos: {previsao.values}")
+    print("=" * 60)
+
+
+def exemplo_mlp_regressor():
+    """
+    Exemplo de previsão usando Rede Neural MLP (Multi-Layer Perceptron)
+    """
+    from sklearn.neural_network import MLPRegressor
+    
+    print("\n" + "=" * 60)
+    print("Exemplo de Previsão com MLP Regressor")
+    print("=" * 60)
+    
+    # Dados de exemplo: anos e quantidade
+    anos = np.array([[2015], [2016], [2017], [2018], [2019], [2020], [2021], [2022], [2023], [2024]])
+    quantidade = np.array([10, 12, 15, 18, 20, 22, 25, 28, 30, 33])
+    
+    print(f"\nDados de treinamento:")
+    print(f"Anos: {anos.flatten()}")
+    print(f"Quantidade: {quantidade}")
+    
+    # Configurar e treinar o modelo MLP
+    modelo = MLPRegressor(hidden_layer_sizes=(50, 50), max_iter=1000, random_state=42)
+    modelo.fit(anos, quantidade)
+    
+    # Fazer previsão para 2025
+    previsao_2025 = modelo.predict([[2025]])
+    print(f"\nPrevisão para 2025: {previsao_2025[0]:.2f}")
+    
+    # Fazer previsões para múltiplos anos
+    anos_futuros = np.array([[2025], [2026], [2027]])
+    previsoes = modelo.predict(anos_futuros)
+    print(f"\nPrevisões para os próximos anos:")
+    for ano, prev in zip(anos_futuros.flatten(), previsoes):
+        print(f"  {ano}: {prev:.2f}")
+    
+    print("=" * 60)
+
+
 if __name__ == "__main__":
+    # Executar exemplo completo
     main()
+    
+    # Executar exemplo simples
+    exemplo_simples()
+    
+    # Executar exemplo com MLP Regressor
+    exemplo_mlp_regressor()

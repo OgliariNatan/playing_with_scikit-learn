@@ -1,43 +1,43 @@
 # playing_with_scikit-learn
 Para nocões do scikit-learn
 
-## ARIMA Time Series Forecasting
+## Previsão de Séries Temporais com ARIMA
 
-This repository includes an example of ARIMA (AutoRegressive Integrated Moving Average) time series forecasting using Python.
+Este repositório inclui um exemplo de previsão de séries temporais com ARIMA (AutoRegressive Integrated Moving Average) usando Python.
 
-### What is ARIMA?
+### O que é ARIMA?
 
-ARIMA is a popular statistical method for analyzing and forecasting time series data. It combines:
-- **AR (AutoRegressive)**: Uses past values to predict future values
-- **I (Integrated)**: Differences the data to make it stationary
-- **MA (Moving Average)**: Uses past forecast errors to predict future values
+ARIMA é um método estatístico popular para análise e previsão de dados de séries temporais. Ele combina:
+- **AR (AutoRegressivo)**: Usa valores passados para prever valores futuros
+- **I (Integrado)**: Diferencia os dados para torná-los estacionários
+- **MA (Média Móvel)**: Usa erros de previsão passados para prever valores futuros
 
-### Installation
+### Instalação
 
-Install the required dependencies:
+Instale as dependências necessárias:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Running the Example
+### Executando o Exemplo
 
-To run the ARIMA forecasting example:
+Para executar o exemplo de previsão ARIMA:
 
 ```bash
 python arima_example.py
 ```
 
-This will:
-1. Generate sample time series data with trend and seasonality
-2. Split the data into training and test sets
-3. Fit an ARIMA(2,1,2) model to the training data
-4. Make predictions on the test set
-5. Evaluate the model performance using MSE, RMSE, and MAE
-6. Generate a visualization saved as `arima_forecast.png`
+Isso irá:
+1. Gerar dados de série temporal de amostra com tendência e sazonalidade
+2. Dividir os dados em conjuntos de treinamento e teste
+3. Ajustar um modelo ARIMA(2,1,2) aos dados de treinamento
+4. Fazer previsões no conjunto de teste
+5. Avaliar o desempenho do modelo usando MSE, RMSE e MAE
+6. Gerar uma visualização salva como `arima_forecast.png`
 
-### Files
+### Arquivos
 
-- `arima_example.py`: Main ARIMA forecasting example script
-- `requirements.txt`: Python package dependencies
-- `arima_forecast.png`: Generated visualization (after running the example)
+- `arima_example.py`: Script principal do exemplo de previsão ARIMA
+- `requirements.txt`: Dependências de pacotes Python
+- `arima_forecast.png`: Visualização gerada (após executar o exemplo)
